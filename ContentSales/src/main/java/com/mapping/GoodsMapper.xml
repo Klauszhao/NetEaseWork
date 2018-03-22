@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.GoodsMapper">
+	<resultMap id="BaseResultMap" type="com.bean.Goods">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="summary" property="summary" jdbcType="VARCHAR" />
+		<result column="price" property="price" jdbcType="DECIMAL" />
+		<result column="content" property="content" jdbcType="VARCHAR" />
+		<result column="url" property="url" jdbcType="VARCHAR" />
+		<result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+		<result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+		<result column="is_deleted" property="isDeleted" jdbcType="SMALLINT" />
+		<result column="is_editor" property="isEditor" jdbcType="SMALLINT" />
+		<result column="parentID" property="parentid" jdbcType="SMALLINT" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, title, summary, price, content, url, createtime, updatetime,
+		is_deleted, is_editor,
+		parentID
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from goods
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from goods
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.bean.Goods">
+		insert into goods (id, title, summary,
+		price, content, url,
+		createtime, updatetime, is_deleted,
+		is_editor, parentID)
+		values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR},
+		#{summary,jdbcType=VARCHAR},
+		#{price,jdbcType=DECIMAL}, #{content,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR},
+		#{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP},
+		#{isDeleted,jdbcType=SMALLINT},
+		#{isEditor,jdbcType=SMALLINT}, #{parentid,jdbcType=SMALLINT})
+	</insert>
+	<insert id="insertSelective" parameterType="com.bean.Goods">
+		insert into goods
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="title != null">
+				title,
+			</if>
+			<if test="summary != null">
+				summary,
+			</if>
+			<if test="price != null">
+				price,
+			</if>
+			<if test="content != null">
+				content,
+			</if>
+			<if test="url != null">
+				url,
+			</if>
+			<if test="createtime != null">
+				createtime,
+			</if>
+			<if test="updatetime != null">
+				updatetime,
+			</if>
+			<if test="isDeleted != null">
+				is_deleted,
+			</if>
+			<if test="isEditor != null">
+				is_editor,
+			</if>
+			<if test="parentid != null">
+				parentID,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="title != null">
+				#{title,jdbcType=VARCHAR},
+			</if>
+			<if test="summary != null">
+				#{summary,jdbcType=VARCHAR},
+			</if>
+			<if test="price != null">
+				#{price,jdbcType=DECIMAL},
+			</if>
+			<if test="content != null">
+				#{content,jdbcType=VARCHAR},
+			</if>
+			<if test="url != null">
+				#{url,jdbcType=VARCHAR},
+			</if>
+			<if test="createtime != null">
+				#{createtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatetime != null">
+				#{updatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isDeleted != null">
+				#{isDeleted,jdbcType=SMALLINT},
+			</if>
+			<if test="isEditor != null">
+				#{isEditor,jdbcType=SMALLINT},
+			</if>
+			<if test="parentid != null">
+				#{parentid,jdbcType=SMALLINT},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.bean.Goods">
+		update goods
+		<set>
+			<if test="title != null">
+				title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="summary != null">
+				summary = #{summary,jdbcType=VARCHAR},
+			</if>
+			<if test="price != null">
+				price = #{price,jdbcType=DECIMAL},
+			</if>
+			<if test="content != null">
+				content = #{content,jdbcType=VARCHAR},
+			</if>
+			<if test="url != null">
+				url = #{url,jdbcType=VARCHAR},
+			</if>
+			<if test="createtime != null">
+				createtime = #{createtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatetime != null">
+				updatetime = #{updatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isDeleted != null">
+				is_deleted = #{isDeleted,jdbcType=SMALLINT},
+			</if>
+			<if test="isEditor != null">
+				is_editor = #{isEditor,jdbcType=SMALLINT},
+			</if>
+			<if test="parentid != null">
+				parentID = #{parentid,jdbcType=SMALLINT},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.bean.Goods">
+		update goods
+		set title = #{title,jdbcType=VARCHAR},
+		summary = #{summary,jdbcType=VARCHAR},
+		price = #{price,jdbcType=DECIMAL},
+		content = #{content,jdbcType=VARCHAR},
+		url = #{url,jdbcType=VARCHAR},
+		createtime = #{createtime,jdbcType=TIMESTAMP},
+		updatetime = #{updatetime,jdbcType=TIMESTAMP},
+		is_deleted = #{isDeleted,jdbcType=SMALLINT},
+		is_editor = #{isEditor,jdbcType=SMALLINT},
+		parentID = #{parentid,jdbcType=SMALLINT}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>

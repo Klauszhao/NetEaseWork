@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.PurchaseRecordMapper">
+	<resultMap id="BaseResultMap" type="com.bean.PurchaseRecord">
+		<id column="id" jdbcType="SMALLINT" property="id" />
+		<result column="user_id" jdbcType="SMALLINT" property="userId" />
+		<result column="commodity_id" jdbcType="SMALLINT" property="commodityId" />
+		<result column="commodity_num" jdbcType="SMALLINT" property="commodityNum" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+	</resultMap>
+
+	<resultMap id="GoodResultMap" type="com.bean.Commodity">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="summary" property="summary" jdbcType="VARCHAR" />
+		<result column="price" property="price" jdbcType="DECIMAL" />
+		<result column="content" property="content" jdbcType="VARCHAR" />
+		<result column="url" property="url" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<resultMap id="orderResultMap" type="com.bean.PurchaseRecord">
+		<!-- <id column="id" jdbcType="SMALLINT" property="id" />
+		<result column="user_id" jdbcType="SMALLINT" property="userId" /> purchase_record.id,-->
+		<result column="commodity_id" jdbcType="SMALLINT" property="commodityId" />
+		<result column="commodity_num" jdbcType="SMALLINT" property="commodityNum" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<association property="commodity" column="commodityId"
+			javaType="com.bean.Commodity" jdbcType="SMALLINT" resultMap="GoodResultMap">
+		</association>
+	</resultMap>
+
+    <select id="selectForAll" resultMap="orderResultMap">
+        SELECT purchase_record.commodity_id,commodity.url,commodity.title,commodity.price,purchase_record.commodity_num,purchase_record.create_time 
+        from commodity,purchase_record
+        WHERE commodity.id=purchase_record.commodity_id
+    </select>
+
+	<sql id="Base_Column_List">
+		id, user_id, commodity_id, commodity_num, create_time,
+		update_time
+	</sql>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Short"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from purchase_record
+		where id = #{id,jdbcType=SMALLINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
+		delete from
+		purchase_record
+		where id = #{id,jdbcType=SMALLINT}
+	</delete>
+	<insert id="insert" parameterType="com.bean.PurchaseRecord">
+		insert into purchase_record
+		(user_id, commodity_id,commodity_num,
+		create_time)
+		values
+		(#{userId,jdbcType=SMALLINT},
+		#{commodityId,jdbcType=SMALLINT},#{commodityNum,jdbcType=SMALLINT},
+		#{createTime,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" parameterType="com.bean.PurchaseRecord">
+		insert into purchase_record
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="commodityId != null">
+				commodity_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=SMALLINT},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=SMALLINT},
+			</if>
+			<if test="commodityId != null">
+				#{commodityId,jdbcType=SMALLINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	
+	<insert id="insertBatch"  parameterType="java.util.List">
+        insert into purchase_record
+        (user_id, commodity_id,commodity_num,
+        create_time)
+        values
+        <foreach collection="listRecord" item="item" separator=",">
+            (#{item.userId},#{item.commodityId},#{item.commodityNum},#{item.createTime})
+        </foreach>
+    </insert>  
+	
+	<update id="updateByPrimaryKeySelective" parameterType="com.bean.PurchaseRecord">
+		update purchase_record
+		<set>
+			<if test="userId != null">
+				user_id = #{userId,jdbcType=SMALLINT},
+			</if>
+			<if test="commodityId != null">
+				commodity_id = #{commodityId,jdbcType=SMALLINT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,jdbcType=SMALLINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.bean.PurchaseRecord">
+		update
+		purchase_record
+		set user_id = #{userId,jdbcType=SMALLINT},
+		commodity_id
+		= #{commodityId,jdbcType=SMALLINT},
+		create_time =
+		#{createTime,jdbcType=TIMESTAMP},
+		update_time =
+		#{updateTime,jdbcType=TIMESTAMP}
+		where id = #{id,jdbcType=SMALLINT}
+	</update>
+</mapper>

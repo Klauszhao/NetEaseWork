@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.ShoppingRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.bean.ShoppingRecord" >
+    <id column="id" property="id" jdbcType="SMALLINT" />
+    <result column="commodity_id" property="commodityId" jdbcType="SMALLINT" />
+    <result column="num" property="num" jdbcType="SMALLINT" />
+    <result column="is_settlement" property="isSettlement" jdbcType="SMALLINT" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  
+    <resultMap id="GoodResultMap" type="com.bean.Commodity">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="summary" property="summary" jdbcType="VARCHAR" />
+        <result column="price" property="price" jdbcType="DECIMAL" />
+        <result column="content" property="content" jdbcType="VARCHAR" />
+        <result column="url" property="url" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <resultMap id="orderResultMap" type="com.bean.ShoppingRecord">
+        <id column="id" jdbcType="SMALLINT" property="id" />
+        <result column="user_id" jdbcType="SMALLINT" property="userId" />
+        <result column="commodity_id" jdbcType="SMALLINT" property="commodityId" />
+        <result column="num" jdbcType="SMALLINT" property="num" />
+        <result column="is_settlement" property="isSettlement" jdbcType="SMALLINT" />
+        <association property="commodity" column="commodityId"
+            javaType="com.bean.Commodity" jdbcType="SMALLINT" resultMap="GoodResultMap">
+        </association>
+    </resultMap>
+
+    <select id="selectForAll" parameterType="java.lang.Short"
+        resultMap="orderResultMap">
+        SELECT shopping_record.id,shopping_record.commodity_id,commodity.url,commodity.title,commodity.price,shopping_record.num
+        from commodity,shopping_record
+        WHERE shopping_record.commodity_id=commodity.id and shopping_record.is_settlement= #{isSettlement}
+    </select>
+  
+  <sql id="Base_Column_List" >
+    id, commodity_id, num, is_settlement, createtime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
+    select 
+    <include refid="Base_Column_List" />
+    from shopping_record
+    where id = #{id,jdbcType=SMALLINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
+    delete from shopping_record
+    where id = #{id,jdbcType=SMALLINT}
+  </delete>
+  <insert id="insert" parameterType="com.bean.ShoppingRecord" >
+    insert into shopping_record (commodity_id, num, 
+      is_settlement, createtime)
+    values (#{commodityId,jdbcType=SMALLINT}, #{num,jdbcType=SMALLINT}, 
+      #{isSettlement,jdbcType=SMALLINT}, #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bean.ShoppingRecord" >
+    insert into shopping_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="commodityId != null" >
+        commodity_id,
+      </if>
+      <if test="num != null" >
+        num,
+      </if>
+      <if test="isSettlement != null" >
+        is_settlement,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=SMALLINT},
+      </if>
+      <if test="commodityId != null" >
+        #{commodityId,jdbcType=SMALLINT},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=SMALLINT},
+      </if>
+      <if test="isSettlement != null" >
+        #{isSettlement,jdbcType=SMALLINT},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.bean.ShoppingRecord" >
+    update shopping_record
+    <set >
+      <if test="commodityId != null" >
+        commodity_id = #{commodityId,jdbcType=SMALLINT},
+      </if>
+      <if test="num != null" >
+        num = #{num,jdbcType=SMALLINT},
+      </if>
+      <if test="isSettlement != null" >
+        is_settlement = #{isSettlement,jdbcType=SMALLINT},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bean.ShoppingRecord" >
+    update shopping_record
+    set commodity_id = #{commodityId,jdbcType=SMALLINT},
+      num = #{num,jdbcType=SMALLINT},
+      is_settlement = #{isSettlement,jdbcType=SMALLINT},
+      createtime = #{createtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+
+   <update id = "updateBatchByIdForCartToPur" parameterType="java.util.List">
+		update shopping_record
+		<trim prefix="set" suffixOverrides=",">
+			<trim prefix="is_settlement =case" suffix="end,">
+				<foreach collection="list" item="item" index="index">
+					<if test="item.isSettlement !=null">
+						when id=#{item.id} then #{item.isSettlement}
+					</if>
+				</foreach>
+			</trim>
+		</trim>
+		where id in
+		<foreach collection="list" index="index" item="item"
+			separator="," open="(" close=")">
+			#{item.id,jdbcType=SMALLINT}
+		</foreach>
+	</update>
+
+</mapper>

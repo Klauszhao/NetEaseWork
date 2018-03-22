@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.js"></script>
+</head>
+<body>
+    <h3 style="color:red">提交数据部分</h3>
+    <table style="border:1px solid black;width:300px;height:150px;">
+        <tr>
+            <td>username:</td>
+            <td><input type="text" id="username"></td>
+        </tr>
+        <tr>
+            <td>password:</td>
+            <td><input type="password" id="pass"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" onclick="test()"></td>
+        </tr>
+    </table>
+    <h3 style="color:red">显示下传回的json数据</h3>
+    <table style="border:1px solid blue;width:300px;height:100px;">
+        <tr>
+            <td>传回的username:</td>
+            <td><div id='backusername' style='color:red;'></div></td>
+        </tr>
+        <tr>
+            <td>传回的password:</td>
+            <td><div id='backpassword' style='color:red;'></div></td>
+        </tr>
+        
+    </table>
+    <script>
+        function test(){
+            //下面这个是我们上传时候用到的对象，这里一定要注意的是，我们后台用的是类对象去接受这些上传的数据
+            //所以里面的属性名要写成Action里的'对象名.属性名'，千万别直接写成'属性名'，不然后台那个对象接收不到
+            var mytest={
+                'mytest.username':$('#username').val(),
+                'mytest.password':$('#pass').val()
+            };
+
+            alert("heihie"+$('#username').val());
+            
+            $.ajax({
+                async : false,
+                cache : false,
+                type : 'POST',
+                url : 'ajaxtest_check.action',
+                dataType : "json",
+                error :  function(XMLHttpRequest,textStatus,errorThrown) {
+                    alert("error:"+XMLHttpRequest.status);
+                    alert("error:"+XMLHttpRequest.readyState);
+                    alert("error:"+textStatus);
+                },
+                success : function(data) {
+                /**重点：前台接收到返回值，直接处理就行*/
+                    alert("success:"+data);
+                }
+
+            });
+            
+        }
+    </script>
+</body>
+</html>
