@@ -27,9 +27,8 @@
             <div class="price">
                 <span class="v-unit">¥</span><span class="v-value">${price}</span>
             </div>
-            <div class="num">购买数量：<span id="plusNum" class="lessNum"><a>-</a></span><span class="totalNum" id="allNum">${buyNum}</span><span id="addNum" class="moreNum"><a>+</a></span></div>
+            <div class="num">数量：<span class="totalNum" id="allNum">${buyNum}</span></div>
             <div class="oprt f-cb">
-                <%-- <a href="/ContentSales/editCommodity?id=${id}" class="u-btn u-btn-primary">编辑</a> --%>
             </div>
         </div>
     </div>

@@ -13,7 +13,7 @@
                    卖家你好，<span class="name">seller</span>！ <a href="/ContentSales/login">[退出]</a>
         </div>
         <ul class="nav">
-            <li><a href="/ContentSales/show">首页</a></li>
+            <li><a href="/ContentSales/queryForSaler">首页</a></li>
         </ul>
     </div>
 </div><div class="g-doc">
@@ -21,18 +21,18 @@
         <h2>内容编辑</h2>
     </div>
     <div class="n-public">
-        <form class="m-form m-form-ht" id="form" method="post" action="/ContentSales/editSubmit?id=${id}"  autocomplete="off">
+        <form class="m-form m-form-ht" id="form" method="post" action="/ContentSales/editSubmit?id=${commodity.id}"  autocomplete="off">
             <div class="fmitem">
                 <label class="fmlab">标题：</label>
                 <div class="fmipt">
                     <input type="hidden" name="id" value="20"/>
-                    <input class="u-ipt ipt" name="title" value="${title}" placeholder="2-80字符"/>
+                    <input class="u-ipt ipt" name="title" value="${commodity.title}" placeholder="2-80字符"/>
                 </div>
             </div>
             <div class="fmitem">
                 <label class="fmlab">摘要：</label>
                 <div class="fmipt">
-                    <input class="u-ipt ipt" name="summary" value="${summary}" placeholder="2-140字符"／>
+                    <input class="u-ipt ipt" name="summary" value="${commodity.summary}" placeholder="2-140字符"／>
                 </div>
             </div>
             <div class="fmitem">
@@ -45,7 +45,7 @@
             <div class="fmitem">
                 <label class="fmlab"></label>
                 <div class="fmipt" id="urlUpload">
-                    <input class="u-ipt ipt"  name="url" value="${url}" placeholder="图片地址"/>
+                    <input class="u-ipt ipt"  name="url" value="${commodity.url}" placeholder="图片地址"/>
                 </div>
                 <div class="fmipt" id="fileUpload"  style="display:none">
                     <input class="u-ipt ipt" name="file" type="file" id="fileUp"/>

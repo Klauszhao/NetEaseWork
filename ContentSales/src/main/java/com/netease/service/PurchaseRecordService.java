@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.bean.Commodity;
 import com.bean.Goods;
+import com.bean.OnlineForSale;
 import com.bean.PurchaseRecord;
 import com.bean.ShoppingRecord;
 import com.common.PageBean;
@@ -28,11 +29,20 @@ public interface PurchaseRecordService {
 	/**
 	 * 根据id来查询一条记录
 	 * 
-	 * @param id
+	 * @param id，表主键id
 	 * @return
 	 */
 	public PurchaseRecord queryById(Integer id);
-
+	/**
+	 * 
+	 * 商品id查询
+	 *
+	 * @param id
+	 * @return
+	 * @author zhaonan<zhaonan1@corp.netease.com>
+	 * @since 2018年3月28日
+	 */
+	public List<PurchaseRecord> queryByCommodityId(Integer id);
 	/**
 	 * 分页查询
 	 * 
@@ -43,6 +53,16 @@ public interface PurchaseRecordService {
 	 * @return 封装了分页信息的bean
 	 */
 	public PageBean queryForPage(String hql, int pageSize, int page);
+	/**
+	 * 
+	 * 根据商品id去查询该商品被购买的数量
+	 *
+	 * @param id
+	 * @return
+	 * @author zhaonan<zhaonan1@corp.netease.com>
+	 * @since 2018年3月23日
+	 */
+	public OnlineForSale SumNumById(Short id);
 	
 	/**
      * 

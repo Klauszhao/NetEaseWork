@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
 import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
 import com.qiniu.storage.Configuration;
@@ -31,6 +33,7 @@ public class QiNiuFileUpUtil {
 
 	public QiNiuFileUpUtil() {
 		// 密钥配置
+	    System.out.println("初始化上传变量");
 		auth = Auth.create(ACCESS_KEY, SECRET_KEY);
 	}
 

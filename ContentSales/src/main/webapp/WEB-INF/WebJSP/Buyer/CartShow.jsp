@@ -12,7 +12,6 @@
 <script type="text/javascript" language="javascript"> 
 
 	//后台servlet中已经向request中set了一个List集合对象,名为mulst 
-
 </script>
 </head>
 <body>
@@ -31,7 +30,7 @@
 	</div>
 	<div class="g-doc">
 		<div class="m-tab m-tab-fw m-tab-simple f-cb">
-			<h2>已购买的内容</h2>
+			<h2>购物车内容</h2>
 		</div>
 		<table class="m-table m-table-row n-table g-b3" id="newTable">
 			<colgroup>

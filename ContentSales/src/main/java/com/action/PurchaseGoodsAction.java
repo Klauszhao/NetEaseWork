@@ -62,7 +62,7 @@ public class PurchaseGoodsAction {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("ccountMap", goodsForOnlines);
         modelAndView.addObject("totalPrice", totalPrice.setScale(2, BigDecimal.ROUND_DOWN).toString());
-        modelAndView.setViewName("accountShow");
+        modelAndView.setViewName("Buyer/AccountShow");
         return modelAndView;
     }
 
@@ -75,7 +75,7 @@ public class PurchaseGoodsAction {
         // 将数据展示到页面上
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("cartOnlineMap", cartOnlineList);
-        modelAndView.setViewName("cartShow");
+        modelAndView.setViewName("Buyer/CartShow");
         return modelAndView;
     }
 
@@ -97,7 +97,7 @@ public class PurchaseGoodsAction {
         GoodsForOnline goodsForOnline = new GoodsForOnline();
         TrangoodForOnLine(goodsForOnline, commodity);
         modelAndView.addObject("goodsForOnline", goodsForOnline);
-        modelAndView.setViewName("CommodityDetailForBuy");
+        modelAndView.setViewName("Buyer/CommodityDetailForBuy");
         return modelAndView;
     }
 
@@ -209,7 +209,7 @@ public class PurchaseGoodsAction {
         // 将数据展示到页面上
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("commodityMap", commodityList);
-        modelAndView.setViewName("CommodityNotBuy");
+        modelAndView.setViewName("Buyer/CommodityNotBuy");
         return modelAndView;
     }
     
@@ -225,25 +225,11 @@ public class PurchaseGoodsAction {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("commodityMap", commodityList);
         modelAndView.addObject("commodityBuyMap",commodityBuyMap);
-        modelAndView.setViewName("CommodityShow");
+        modelAndView.setViewName("Buyer/CommodityShow");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/queryForSaler", method = RequestMethod.GET)
-    public ModelAndView queryForSaler() {
-        // 查询未被购买的商品
-        List<Commodity> commodityList=commodityservice.queryForNotBuy();
-        
-        // 查询已经被购买的商品
-        List<Commodity> commodityBuyMap=commodityservice.CommodityBought();
-        
-        // 将数据展示到页面上
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("commodityMap", commodityList);
-        modelAndView.addObject("commodityNotSaleMap",commodityBuyMap);
-        modelAndView.setViewName("CommoditySale");
-        return modelAndView;
-    }
+
     
     /**
      * 将查询数据进行装换，转换为页面财务数据展示 

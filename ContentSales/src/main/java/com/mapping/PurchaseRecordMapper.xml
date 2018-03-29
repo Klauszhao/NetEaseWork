@@ -31,10 +31,23 @@
 		</association>
 	</resultMap>
 
+    <resultMap id="SumResult" type="com.bean.OnlineForSale">  
+        <result column="sum" jdbcType="SMALLINT" property="SellerNum" />
+        <association property="commodity" column="commodityId"
+            javaType="com.bean.Commodity" jdbcType="SMALLINT" resultMap="GoodResultMap">
+        </association>
+    </resultMap>
+
     <select id="selectForAll" resultMap="orderResultMap">
         SELECT purchase_record.commodity_id,commodity.url,commodity.title,commodity.price,purchase_record.commodity_num,purchase_record.create_time 
         from commodity,purchase_record
         WHERE commodity.id=purchase_record.commodity_id
+    </select>
+    
+    <select id="selectNumById" resultMap="SumResult" parameterType="java.lang.Short">
+        SELECT commodity.id,commodity.url,commodity.title,commodity.content,commodity.price,COALESCE(SUM(purchase_record.commodity_num),0) as sum
+        from commodity,purchase_record
+        WHERE commodity.id=purchase_record.commodity_id and purchase_record.commodity_id= #{id,jdbcType=SMALLINT}
     </select>
 
 	<sql id="Base_Column_List">
@@ -49,6 +62,14 @@
 		from purchase_record
 		where id = #{id,jdbcType=SMALLINT}
 	</select>
+	
+	 <select id="selectByCommodityId" parameterType="java.lang.Short"
+        resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from purchase_record
+        where commodity_id = #{id,jdbcType=SMALLINT}
+    </select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
 		delete from
 		purchase_record

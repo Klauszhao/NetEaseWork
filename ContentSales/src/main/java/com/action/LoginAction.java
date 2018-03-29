@@ -63,7 +63,7 @@ public class LoginAction {
 				&& user.getPassword().equals(salle_user.getPassword())) {
 			// 卖家的信息确认
 		    System.out.println("到了卖家");
-			return "redirect:queryForSaler";
+			return "redirect:QueryForSaler";
 		}
 		return "error";
 	}

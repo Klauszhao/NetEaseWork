@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bean.Commodity;
+import com.bean.OnlineForSale;
 import com.bean.PurchaseRecord;
 import com.bean.ShoppingRecord;
 import com.common.PageBean;
@@ -57,8 +58,7 @@ public class PurchaseRecordServiceImpl implements PurchaseRecordService{
 
 	@Override
 	public PurchaseRecord queryById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	    return purchaseRecordMap.selectByPrimaryKey(id.shortValue());
 	}
 	
     @Override
@@ -75,6 +75,17 @@ public class PurchaseRecordServiceImpl implements PurchaseRecordService{
             throw new RuntimeException("调用purchaseRecordMap.insertBatch插入数据失败，插入数据数目不对。");
         }
         return "success";
+    }
+
+    @Override
+    public OnlineForSale SumNumById(Short id) {
+        OnlineForSale result= purchaseRecordMap.selectNumById(id);
+        return result;
+    }
+
+    @Override
+    public List<PurchaseRecord> queryByCommodityId(Integer id) {
+        return purchaseRecordMap.selectByCommodityId(id.shortValue());
     }
 
 }

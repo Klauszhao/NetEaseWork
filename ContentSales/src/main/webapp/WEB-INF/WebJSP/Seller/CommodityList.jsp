@@ -14,8 +14,8 @@
                     卖家你好，<span class="name">seller</span>！<a href="/ContentSales/login">[退出]</a>
         </div>
         <ul class="nav">
-            <li><a href="/ContentSales/queryForSaler">首页</a></li>
-            <li><a href="/ContentSales/publish">发布</a></li>
+            <li><a href="/ContentSales/QueryForSaler">首页</a></li>
+            <li><a href="/ContentSales/PublishCommodity">发布</a></li>
         </ul>
     </div>
 </div><div class="g-doc">
@@ -31,7 +31,7 @@
      <ul class="f-cb" id="plist">
          <c:forEach items="${commodityMap}" var="commodity">
                 <li id="p-${commodity.id }">
-                    <a href="/ContentSales/CommodityDetailForSale?id=${commodity.id }"  class="link">
+                    <a href="/ContentSales/commodityDetail?id=${commodity.id }"  class="link">
                         <div class="img"><img src="${commodity.url}" alt="${commodity.title }"></div>
                         <h3>${commodity.title } </h3>
                         <div class="price"><span class="v-unit">¥</span><span class="v-value">${commodity.price} </span></div>
@@ -41,7 +41,7 @@
           </c:forEach>
           <c:forEach items="${commodityNotSaleMap}" var="commodity">
                 <li id="p-${commodity.id }">
-                    <a href="/ContentSales/CommodityDetailForSale?id=${commodity.id }"  method="POST" class="link">
+                    <a href="/ContentSales/editAndDelCommodity?id=${commodity.id }"  method="POST" class="link">
                         <div class="img"><img src="${commodity.url}" alt="${commodity.title }"></div>
                         <h3>${commodity.title } </h3>
                         <div class="price"><span class="v-unit">¥</span><span class="v-value">${commodity.price} </span></div>

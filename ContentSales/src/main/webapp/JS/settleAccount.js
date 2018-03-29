@@ -65,7 +65,7 @@
 			return;
 	};
 	$id('back').onclick = function(){
-		location.href = window.history.back();
+		window.history.back();
 	}
 })(window,document);
 

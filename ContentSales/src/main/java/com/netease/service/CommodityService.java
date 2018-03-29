@@ -7,6 +7,7 @@ import com.common.PageBean;
 
 public interface CommodityService {
 
+    public int deleteById(Commodity commodity);
 	public boolean delete(Commodity commodity);
 	
 	public String insert(Commodity commodity);

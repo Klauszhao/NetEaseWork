@@ -31,10 +31,9 @@
         </thead>
         <tbody>
          <c:forEach items="${ccountMap}" var="accountRecord">
-                
             <tr>
-                <td><a href="/ContentSales/showDetail?id=${accountRecord.commodityId }"><img src="${accountRecord.url}" alt=""></a></td>
-                <td><h4><a href="/ContentSales/showDetail?id=${accountRecord.commodityId }">${accountRecord.title }</a></h4></td>
+                <td><a href="/ContentSales/CommodityDetailForBuy?id=${accountRecord.commodityId }"><img src="${accountRecord.url}" alt=""></a></td>
+                <td><h4><a href="/ContentSales/CommodityDetailForBuy?id=${accountRecord.commodityId }">${accountRecord.title }</a></h4></td>
                 <td><span class="v-time">${accountRecord.createtime }</span></td>
                 <td><span class="v-num">${accountRecord.num }</span></td>
                 <td><span class="v-unit">¥</span><span class="value">${accountRecord.price}</span></td>

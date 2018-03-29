@@ -15,22 +15,22 @@
                     卖家你好，<span class="name">seller</span>！<a href="/ContentSales/login">[退出]</a>
         </div>
         <ul class="nav">
-            <li><a href="/ContentSales/CommoditySale">首页</a></li>
-            <li><a href="/ContentSales/publish">发布</a></li>
+            <li><a href="/ContentSales/QueryForSaler">首页</a></li>
+            <li><a href="/ContentSales/PublishCommodity">发布</a></li>
         </ul>
     </div>
 </div><div class="g-doc">
     <div class="n-show f-cb" id="showContent">
-        <div class="img"><img src="${url}" alt="" ></div>
+        <div class="img"><img src="${online.url}" alt="" ></div>
         <div class="cnt">
-            <h2>${title}</h2>
-            <p class="summary">${summary}</p>
+            <h2>${online.title}</h2>
+            <p class="summary">${online.summary}</p>
             <div class="price">
-                <span class="v-unit">¥</span><span class="v-value">${price}</span>
+                <span class="v-unit">¥</span><span class="v-value">${online.price}</span>
             </div>
-            <div class="num">购买数量：<span id="plusNum" class="lessNum"><a>-</a></span><span class="totalNum" id="allNum">${buyNum}</span><span id="addNum" class="moreNum"><a>+</a></span></div>
+            <div class="num">出售数量：<span class="totalNum" id="allNum">${online.num}</span></div>
             <div class="oprt f-cb">
-                <a href="/ContentSales/editCommodity?id=${id}" class="u-btn u-btn-primary">编辑</a>
+                <a href="/ContentSales/editCommodity?id=${online.commodityId}" class="u-btn u-btn-primary">编辑</a>
             </div>
         </div>
     </div>
@@ -38,7 +38,7 @@
         <h2>详细信息</h2>
     </div>
     <div class="n-detail">
-        ${content}
+        ${online.content}
     </div>
 </div>
 <div class="n-foot">

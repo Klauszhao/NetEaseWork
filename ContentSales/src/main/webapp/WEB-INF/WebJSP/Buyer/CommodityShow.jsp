@@ -18,7 +18,7 @@
             <ul class="nav">
                 <li><a href="/ContentSales/queryForShow">首页</a></li>             
                 <li><a href="/ContentSales/accountShow">账务</a></li>
-                <li><a href="/ContentSales/cartGoodsShow">购物车</a></li>
+                <li><a href="/ContentSales/cartShow">购物车</a></li>
             </ul>
         </div>
     </div>

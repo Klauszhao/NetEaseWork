@@ -15,9 +15,9 @@
 				买家你好，<span class="name">buyer</span>！<a href="/ContentSales/login">[退出]</a>
 			</div>
 			<ul class="nav">
-				<li><a href="/">首页</a></li>
-				<li><a href="/account">账务</a></li>
-				<li><a href="/settleAccount">购物车</a></li>
+                <li><a href="/ContentSales/queryForShow">首页</a></li>             
+                <li><a href="/ContentSales/accountShow">账务</a></li>
+                <li><a href="/ContentSales/cartShow">购物车</a></li>
 			</ul>
 		</div>
 	</div>
