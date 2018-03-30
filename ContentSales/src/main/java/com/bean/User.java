@@ -12,7 +12,17 @@ public class User {
     private Boolean type;
 
     private Date createtime;
-
+    public User(){
+        
+    }
+    public User(String username,String password){
+        setUsername(username);
+        setPassword(password);
+    }
+    public User(Short id,String password){
+        setId(id);
+        setPassword(password);
+    }
     public Short getId() {
         return id;
     }
