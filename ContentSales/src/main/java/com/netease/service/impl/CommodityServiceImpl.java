@@ -22,10 +22,6 @@ public class CommodityServiceImpl implements CommodityService {
 
     @Override
     public String insert(Commodity commodity) {
-        System.out.println("ServiceImpl---标题：" + commodity.getTitle());
-        System.out.println("ServiceImpl---摘要：" + commodity.getSummary());
-        System.out.println("ServiceImpl---正文：" + commodity.getContent());
-        System.out.println("ServiceImpl---价格：" + commodity.getPrice());
 
         /*
          * Date nowdate=new Date(); SimpleDateFormat df = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss");//设置日期格式
@@ -87,6 +83,7 @@ public class CommodityServiceImpl implements CommodityService {
      * 所有跟此记录相关的所有物品都要被更新，比如：购买此物品的用户的交易记录，这个时候需要更改该记录 相比较如 直接修改记录，之前的记录就看不到，谁操作的就更加难以看到，此处主要看应用场景。
      * 
      * 参考淘宝，淘宝里很多宝贝 过几年后就下架了，单依旧在用户的购买记录中，并且用户点击该商品依旧可以看到一些。
+     * 此操作更新后新的id 存进了commodity对象中
      * 
      * @see com.netease.service.CommodityService#updateByPrimaryId(com.bean. Commodity)
      */

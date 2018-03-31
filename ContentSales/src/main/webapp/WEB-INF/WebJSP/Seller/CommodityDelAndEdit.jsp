@@ -55,7 +55,7 @@ function Submit(){
 <div class="n-support">请使用Chrome、Safari等webkit内核的浏览器！</div><div class="n-head">
     <div class="g-doc f-cb">
         <div class="user">
-                    卖家你好，<span class="name">seller</span>！<a href="/ContentSales/login">[退出]</a>
+                    卖家你好，<span class="name">seller</span>！<a href="/ContentSales/quit">[退出]</a>
         </div>
         <ul class="nav">
             <li><a href="/ContentSales/QueryForSaler">首页</a></li>

@@ -13,7 +13,7 @@
 	<div class="n-head">
 		<div class="g-doc f-cb">
 			<div class="user">
-				买家你好，<span class="name">buyer</span>！<a href="/ContentSales/login">[退出]</a>
+				买家你好，<span class="name">buyer</span>！<a href="/ContentSales/quit">[退出]</a>
 			</div>
 			<ul class="nav">
 				<li><a href="/ContentSales/queryForShow">首页</a></li>             

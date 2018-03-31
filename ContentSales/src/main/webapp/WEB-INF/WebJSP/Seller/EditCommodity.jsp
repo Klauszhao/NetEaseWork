@@ -18,7 +18,7 @@ function Submit(){
     <div class="n-head">
         <div class="g-doc f-cb">
             <div class="user">
-                卖家你好，<span class="name">seller</span>！ <a href="/ContentSales/login">[退出]</a>
+                卖家你好，<span class="name">seller</span>！ <a href="/ContentSales/quit">[退出]</a>
             </div>
             <ul class="nav">
                 <li><a href="/ContentSales/QueryForSaler">首页</a></li>
@@ -31,8 +31,9 @@ function Submit(){
         </div>
         <div class="n-public">
             <form id="commodityform" name="commodityform" method="POST"
-                action="UpdateCommodity" modelAttribute="commodity"
+                action="UpdateSubmit" modelAttribute="commodity"
                 onsubmit="return false;" autocomplete="off" class="m-form m-form-ht">
+                <input type="hidden" name="id" value="${commodity.id}" />
                 <div class="fmitem">
                     <label class="fmlab">标题：</label>
                     <div class="fmipt">

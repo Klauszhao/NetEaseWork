@@ -20,7 +20,7 @@ public class PageBean<Object> {
 	private boolean hasPreviousPage; // 是否有前一页
 	private boolean hasNextPage; // 是否有下一页
 
-	public void init() {
+	public PageBean(boolean isFirstPage,boolean isLastPage,boolean hasPreviousPage,boolean hasNextPage) {
 		this.isFirstPage = isFirstPage;
 		this.isLastPage = isLastPage;
 		this.hasPreviousPage = hasPreviousPage;
