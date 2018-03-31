@@ -1,19 +1,26 @@
 package com.action;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.bean.Student;
 import com.bean.User;
+import com.common.LoginAuth;
 
 import net.sf.json.JSONObject;
 
@@ -41,9 +48,19 @@ public class LoginAction {
 		return "login";
 	}
 
+	/**
+	 * 
+	 * 此处需要对登录进行验证，将登录名存进session中
+	 *
+	 * @param user
+	 * @param model
+	 * @return
+	 * @author zhaonan<zhaonan1@corp.netease.com>
+	 * @since 2018年3月30日
+	 */
 	@RequestMapping(value = "/loginAction", method = RequestMethod.POST)
 	public String loginAction(@ModelAttribute("SpringWeb") User user,
-			ModelMap model) {
+			ModelMap model,HttpSession session) {
 		System.out.println("Login方法");
 		System.out.println("姓名：" + user.getUsername() + "---密码："
 				+ user.getPassword());
@@ -57,13 +74,18 @@ public class LoginAction {
 
 		if (user.getUsername().equals(buy_user.getUsername())
 				&& user.getPassword().equals(buy_user.getPassword())) {
-			// 买家的信息确认
+			// 买家的信息存进session
+		    session.setAttribute(AuthInterceptor.SESSION_USERID, user.getUsername());  
+            session.setAttribute(AuthInterceptor.SESSION_AUTHS,new LoginAuth().getBuySet());
+		    
 			return "redirect:queryForShow";
 		} else if (user.getUsername().equals(salle_user.getUsername())
 				&& user.getPassword().equals(salle_user.getPassword())) {
-			// 卖家的信息确认
-		    System.out.println("到了卖家");
-			return "redirect:QueryForSaler";
+            // 卖家的信息存进session
+            session.setAttribute(AuthInterceptor.SESSION_USERID, user.getUsername());
+            session.setAttribute(AuthInterceptor.SESSION_AUTHS, new LoginAuth().getSelSet());
+
+            return "redirect:QueryForSaler";
 		}
 		return "error";
 	}
@@ -162,6 +184,17 @@ public class LoginAction {
 		System.out.println("json----:" + getCheck_return());
 		return check_return;
 	}
+	
+    @RequestMapping(value = "/quit")
+    public String quit(Model model,HttpSession session) {
+        System.out.println("quit");
+        session.removeAttribute(AuthInterceptor.SESSION_USERID);
+        session.removeAttribute(AuthInterceptor.SESSION_AUTHS);
+        /*session.invalidate();*/
+        
+        model.addAttribute("user", new User());
+        return "login";
+    }
 
 	public String getCheck_return() {
 		return check_return;

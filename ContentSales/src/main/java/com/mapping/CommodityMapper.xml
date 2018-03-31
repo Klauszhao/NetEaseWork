@@ -75,6 +75,10 @@
 	</insert>
 
 	<insert id="insert" parameterType="com.bean.Commodity">
+	    <selectKey resultType="java.lang.Short" order="AFTER"
+            keyProperty="id">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
 		insert into commodity (title, summary,
 		price, content, url,
 		createtime)

@@ -11,7 +11,7 @@
 	<div class="n-head">
 		<div class="g-doc f-cb">
 			<div class="user">
-				买家：<span class="name">buyer</span>，你好！<a href="/ContentSales/login">[退出]</a>
+				买家：<span class="name">buyer</span>，你好！<a href="/ContentSales/quit">[退出]</a>
 			</div>
 			<ul class="nav">
 				<li><a href="/ContentSales/queryForShow">首页</a></li>
@@ -32,7 +32,7 @@
 						<span class="v-unit">¥</span><span class="v-value">${goodsForOnline.price}</span>
 					</div>
 					<div class="num">
-						售出数量： 
+						购买数量： 
 						<span id="plusNum" class="lessNum"><a>-</a></span>
 						<span id="allNum" class="totalNum" >${goodsForOnline.num}</span> 
 						<span id="addNum" class="moreNum"><a>+</a></span>

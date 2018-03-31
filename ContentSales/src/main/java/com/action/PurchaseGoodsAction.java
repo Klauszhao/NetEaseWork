@@ -24,6 +24,7 @@ import com.bean.Commodity;
 import com.bean.GoodsForOnline;
 import com.bean.PurchaseRecord;
 import com.bean.ShoppingRecord;
+import com.common.Auth;
 import com.common.CommonDate;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -47,7 +48,7 @@ public class PurchaseGoodsAction {
 
     // 从Action返回json数据给调用的Ajax。
     private String check_return;
-
+    @Auth("accountShow")  
     @RequestMapping(value = "/accountShow", method = RequestMethod.GET)
     // 财务页面展示数据
     public ModelAndView accoutShow() {
@@ -65,7 +66,7 @@ public class PurchaseGoodsAction {
         modelAndView.setViewName("Buyer/AccountShow");
         return modelAndView;
     }
-
+    @Auth("cartShow") 
     @RequestMapping(value = "/cartShow", method = RequestMethod.GET)
     public ModelAndView cartGoods() {
 
@@ -88,6 +89,7 @@ public class PurchaseGoodsAction {
      * @author zhaonan<zhaonan1@corp.netease.com>
      * @since 2018年3月16日
      */
+    @Auth("CommodityDetailForBuy") 
     @RequestMapping(value = "/CommodityDetailForBuy", method = RequestMethod.GET)
     public ModelAndView commodityForBuy(String id, Model model) { // PurchaseRecord purchaseRecord 思考，这里是否可以传一个对象
         Integer sid = Integer.parseInt(id);
@@ -197,7 +199,7 @@ public class PurchaseGoodsAction {
         }
         return check_return;
     }
-    
+    @Auth("queryForNotBuy") 
     @RequestMapping(value = "/queryForNotBuy", method = RequestMethod.GET)
     public ModelAndView queryForNotBuy() {
         List<Commodity> commodityList=commodityservice.queryForNotBuy();
@@ -212,7 +214,7 @@ public class PurchaseGoodsAction {
         modelAndView.setViewName("Buyer/CommodityNotBuy");
         return modelAndView;
     }
-    
+    @Auth("queryForShow") 
     @RequestMapping(value = "/queryForShow", method = RequestMethod.GET)
     public ModelAndView queryForBuyer() {
         // 查询未被购买的商品
@@ -228,8 +230,14 @@ public class PurchaseGoodsAction {
         modelAndView.setViewName("Buyer/CommodityShow");
         return modelAndView;
     }
-
-
+    @Auth("buyAuthError") 
+    @RequestMapping(value = "/buyAuthError", method = RequestMethod.GET)
+    public ModelAndView buyAuthError() {
+        // 将数据展示到页面上
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("Buyer/BuyAuthError");
+        return modelAndView;
+    }
     
     /**
      * 将查询数据进行装换，转换为页面财务数据展示 
