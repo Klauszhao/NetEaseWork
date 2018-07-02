@@ -271,7 +271,7 @@ public class PurchaseGoodsAction {
      *
      * @param gForOnline
      * @param commodity
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月16日
      */
     public void TrangoodForOnLine(GoodsForOnline gForOnline, Commodity commodity) {
@@ -304,7 +304,7 @@ public class PurchaseGoodsAction {
      *
      * @param purchaseRecordList
      * @param cartOnlineList
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月20日
      */
     public void TranPurchaseRecord(List<PurchaseRecord> purchaseRecordList, List<CartOnline> cartOnlineList) {
@@ -334,7 +334,7 @@ public class PurchaseGoodsAction {
      *
      * @param shoppingRecordList
      * @param cartOnlineList
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月20日
      */
     public void TranCartOnline(List<ShoppingRecord> shoppingRecordList, List<CartOnline> cartOnlineList) {
@@ -356,7 +356,7 @@ public class PurchaseGoodsAction {
      *
      * @param shoppingRecordList
      * @param cartOnlineList
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月20日
      */
     public void TranShoppingRecord(List<ShoppingRecord> shoppingRecordList, List<CartOnline> cartOnlineList) {
