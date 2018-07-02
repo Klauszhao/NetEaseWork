@@ -55,7 +55,7 @@ public class LoginAction {
 	 * @param user
 	 * @param model
 	 * @return
-	 * @author zhaonan<zhaonan1@corp.netease.com>
+	 * @author zhaonan
 	 * @since 2018年3月30日
 	 */
 	@RequestMapping(value = "/loginAction", method = RequestMethod.POST)

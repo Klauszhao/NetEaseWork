@@ -12,7 +12,7 @@ public class JSONSring {
      * ajax 返回值，正确的返回值
      *
      * @return
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月28日
      */
     public static String successString() {
@@ -29,7 +29,7 @@ public class JSONSring {
      * AJAX返回值，错误的返回值
      *
      * @return
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月28日
      */
     public static String errorString() {

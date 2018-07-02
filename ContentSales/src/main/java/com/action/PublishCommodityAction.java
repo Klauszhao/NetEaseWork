@@ -40,7 +40,7 @@ public class PublishCommodityAction {
      * 卖家 主页
      *
      * @return
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月23日
      */
     @Auth("QueryForSaler") 
@@ -66,7 +66,7 @@ public class PublishCommodityAction {
      *
      * @param model
      * @return
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月23日
      */
     @Auth("PublishCommodity") 
@@ -83,7 +83,7 @@ public class PublishCommodityAction {
      * @param commodity
      * @param model
      * @return
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月23日
      */
     @Auth("SubmitCommodity") 
@@ -112,7 +112,7 @@ public class PublishCommodityAction {
      * @param id
      * @param model
      * @return
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月29日
      */
     @Auth("commodityDetail") 
@@ -141,7 +141,7 @@ public class PublishCommodityAction {
      * @param id
      * @param model
      * @return
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月23日
      */
     @Auth("editAndDelCommodity")
@@ -175,7 +175,7 @@ public class PublishCommodityAction {
      * @param id
      * @param model
      * @return
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月23日
      */
     @Auth("editCommodity") 
@@ -200,7 +200,7 @@ public class PublishCommodityAction {
      * @param commodity
      * @param model
      * @return
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaona
      * @since 2018年3月23日
      */
     @Auth("UpdateSubmit")
@@ -230,7 +230,7 @@ public class PublishCommodityAction {
      * @param id
      * @param ajaxResult 
      * @return
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月28日
      */
     
@@ -277,7 +277,7 @@ public class PublishCommodityAction {
      *
      * @param online
      * @param commodity
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaona
      * @since 2018年3月31日
      */
     public void TranCartOnline(CartOnline cartOnline, OnlineForSale onlineForSale){
@@ -293,7 +293,7 @@ public class PublishCommodityAction {
      *
      * @param online
      * @param commodity
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月31日
      */
     public void TranOnline(Online online, OnlineForSale onlineForSale){
@@ -311,7 +311,7 @@ public class PublishCommodityAction {
      *
      * @param online
      * @param commodity
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月31日
      */
     public void CommodityTranOnline(Online online, Commodity commodity) {

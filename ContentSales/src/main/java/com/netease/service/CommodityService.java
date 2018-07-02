@@ -29,7 +29,7 @@ public interface CommodityService {
 	 * 查询出没有被购买的商品
 	 *
 	 * @return
-	 * @author zhaonan<zhaonan1@corp.netease.com>
+	 * @author zhaonan
 	 * @since 2018年3月20日
 	 */
 	public List<Commodity> queryForNotBuy();
@@ -38,7 +38,7 @@ public interface CommodityService {
 	 * 查询出已经被购买的商品
 	 *
 	 * @return
-	 * @author zhaonan<zhaonan1@corp.netease.com>
+	 * @author zhaonan
 	 * @since 2018年3月21日
 	 */
 	public List<Commodity> CommodityBought();

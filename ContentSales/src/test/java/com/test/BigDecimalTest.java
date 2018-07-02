@@ -19,7 +19,7 @@ public class BigDecimalTest {
     /**
      * 指定小数点输出 TODO
      *
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月13日
      */
     public static void TestTwo() {
@@ -36,7 +36,7 @@ public class BigDecimalTest {
      * 利用 DecimalFormat对数据进行格式化
      * TODO
      *
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月13日
      */
     public static void TestThr(){

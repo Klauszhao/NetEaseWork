@@ -37,7 +37,7 @@ public class UploadFile{
 	 *
 	 * @param model
 	 * @return
-	 * @author zhaonan<zhaonan1@corp.netease.com>
+	 * @author zhaonan
 	 * @since 2018年3月22日
 	 */
     @RequestMapping(value = "/Uptoken", method = RequestMethod.POST)

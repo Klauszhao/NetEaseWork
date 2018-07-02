@@ -86,7 +86,7 @@ public class PurchaseGoodsAction {
      * @param purchaseRecord
      * @param model
      * @return
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月16日
      */
     @Auth("CommodityDetailForBuy") 
@@ -244,7 +244,7 @@ public class PurchaseGoodsAction {
      *
      * @param purchaseRecordList
      * @param goodsForOnlines
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月13日
      */
     public static BigDecimal purchaseRecordToGoodsForOnline(List<PurchaseRecord> purchaseRecordList,

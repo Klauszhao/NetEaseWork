@@ -23,7 +23,7 @@ public class CommonAction {
      *
      * @param model
      * @return
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月23日
      */
     @RequestMapping(value = "/show")
@@ -41,7 +41,7 @@ public class CommonAction {
      * @param id
      * @param model
      * @return
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月23日
      */
     @RequestMapping(value = "/showDetail")

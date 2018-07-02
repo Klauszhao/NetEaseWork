@@ -87,7 +87,7 @@ public class AuthInterceptor implements HandlerInterceptor {
      *
      * @param auths
      * @return
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月31日
      */
     public String getAuthErrorJsp(Set<String> auths){

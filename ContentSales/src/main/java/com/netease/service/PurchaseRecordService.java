@@ -39,7 +39,7 @@ public interface PurchaseRecordService {
 	 *
 	 * @param id
 	 * @return
-	 * @author zhaonan<zhaonan1@corp.netease.com>
+	 * @author zhaonan
 	 * @since 2018年3月28日
 	 */
 	public List<PurchaseRecord> queryByCommodityId(Integer id);
@@ -59,7 +59,7 @@ public interface PurchaseRecordService {
 	 *
 	 * @param id
 	 * @return
-	 * @author zhaonan<zhaonan1@corp.netease.com>
+	 * @author zhaonan
 	 * @since 2018年3月23日
 	 */
 	public OnlineForSale SumNumById(Short id);
@@ -69,7 +69,7 @@ public interface PurchaseRecordService {
      * 购物车中的商品被点击购买，先将购物车数据更新，再在购买表中增加记录
      *
      * @return
-     * @author zhaonan<zhaonan1@corp.netease.com>
+     * @author zhaonan
      * @since 2018年3月20日
      */
     public String cartToPurchase(List<PurchaseRecord> purchaseRecordList,List<ShoppingRecord> shoppingRecordList);
